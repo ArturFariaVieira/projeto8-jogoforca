@@ -7,8 +7,8 @@ function Botao(props) {
        return (
            <>
                <button 
-               disabled = {(props.iniciado === false || props.clicados.includes(props.index)) ? true : false }
-               onClick = {() => {props.funcao(props.index)} }> 
+               disabled = {(props.iniciado === false || props.clicados.includes(props.index) || props.erros === 6 || !props.desaf.includes("_")) ? true : false }
+               onClick = {() => {props.funcao(props)} }> 
                {props.letra.toUpperCase()}             
                </button>
            </>
@@ -29,7 +29,9 @@ function Botao(props) {
                 iniciado = {props.iniciado} 
                 index = {index} 
                 funcao = {props.clicados}
-                clicados = {props.lista}/>)}
+                clicados = {props.lista}
+                erros = {props.cont}
+                desaf = {props.desafio}/>)}
            </Caixabotoes >
                )
    }
@@ -44,12 +46,20 @@ function Botao(props) {
        width: 70px;
        height: 70px;
        border-radius: 5px;
-       background-color: white;
+       background-color: lightblue;
        margin: 3px;
        margin-bottom:10px;
        text-align: center;    
        border: solid 1px blue;
        font-size: 20px;
+       &:Disabled{
+        background-color: grey;
+        border: solid 1px black;
+       }
+       &:hover{
+        cursor:pointer;
+       }
+       
    
    
    }`
