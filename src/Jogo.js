@@ -16,11 +16,11 @@ export default function Jogo(props) {
     return (
         <Container>
             <Caixaimagem>
-                <img src={arrayimagens[props.cont]}/>
+                <img src={arrayimagens[props.cont]} data-identifier="game-image"/>
             </Caixaimagem>
             <Caixapalavras>
-                <button onClick= {() => props.comeca({palavras})}> Sortear Palavra </button>
-                <Caixapalavra desaf= {props.desafio} cont = {props.cont}>{props.cont ===6 ? props.fim :props.desafio} </Caixapalavra>
+                <button data-identifier="choose-word" onClick= {() => props.comeca({palavras})}> Sortear Palavra </button>
+                <Caixapalavra data-identifier="word" desaf= {props.desafio} cont = {props.cont}>{props.cont ===6 ? props.fim :props.desafio} </Caixapalavra>
             </Caixapalavras>
         </Container>
     )
@@ -66,6 +66,7 @@ button {
     height: 50px;
     width: 200px;
     margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     &:hover{
         cursor: pointer;
@@ -78,6 +79,7 @@ width: 500px;
 height: 100px;
 display: flex;
 position: absolute;
+justify-content: center;
 right: -100px;
 bottom: 10px;
 color: ${(props) => props.cont === 6? 'red' : (props.desaf.includes("_") ? 'black': 'green')};
