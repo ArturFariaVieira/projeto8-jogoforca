@@ -59,7 +59,9 @@ export default function App() {
         let verifica = palavra;
         palavra2.forEach((s, index) => {if(s.normalize('NFD').replace(/[\u0300-\u036f]/g, "") === props.letra){arrayindex.push(index)}} )
         arrayindex.forEach((s) => {verifica[s] = palavra2[s]; setPalavra([...palavra, verifica[s]])})
-        palavra2.includes(props.letra) ? setPalavra([...verifica]) : setConterros(conterros + 1)
+        let palavranormalizada = palavra2.toString();
+        palavranormalizada = palavranormalizada.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+        palavranormalizada.includes(props.letra) ? setPalavra([...verifica]) : setConterros(conterros + 1)
         if(conterros===6){setPalavra([...palavra2])}
         
 
